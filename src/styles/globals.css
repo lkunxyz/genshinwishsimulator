@@ -2,7 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Font optimization - use swap for all fonts */
 @layer base {
+  * {
+    font-display: swap;
+  }
+
   body {
     @apply bg-dark text-gray-200;
   }

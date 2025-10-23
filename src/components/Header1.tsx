@@ -108,7 +108,7 @@ export function Header({ themeConfig, meta }: HeaderProps) {
                         {/* Logo 区域 */}
                         <div className="flex-shrink-0 px-4 sm:px-6 lg:px-8">
                             <Link href={`/${locale}`} className="flex items-center gap-2">
-                                <img src="/logo.png" alt="Logo" className="h-8 w-auto" />
+                                <img src="/logo-small.webp" alt="Logo" width={32} height={32} className="h-8 w-auto" />
                                 <span className="text-lg md:text-xl font-bold text-theme-text-primary" style={{ color: primaryColor }}>
                                     {siteName}
                                 </span>
@@ -205,7 +205,10 @@ export function Header({ themeConfig, meta }: HeaderProps) {
                             </div>
 
                             <div className="hidden md:flex items-center space-x-4">
-                                <button className="p-2 text-theme-text-secondary hover:text-primary-500 dark:hover:text-primary-400">
+                                <button
+                                    className="p-2 text-theme-text-secondary hover:text-primary-500 dark:hover:text-primary-400"
+                                    aria-label="Search"
+                                >
                                     <Icon icon="material-symbols:search-outline" className="w-6 h-6" />
                                 </button>
                                 <ThemeSwitch />
@@ -279,7 +282,10 @@ export function Header({ themeConfig, meta }: HeaderProps) {
                                 <div className="px-4 py-3 flex items-center justify-between">
                                     <LocaleSwitch themeConfig={themeConfig} />
                                     <div className="flex space-x-2">
-                                        <button className="p-2 text-theme-text-secondary hover:text-primary-500 dark:hover:text-primary-400">
+                                        <button
+                                            className="p-2 text-theme-text-secondary hover:text-primary-500 dark:hover:text-primary-400"
+                                            aria-label="Search"
+                                        >
                                             <Icon icon="material-symbols:search-outline" className="w-5 h-5" />
                                         </button>
                                         <ThemeSwitch />

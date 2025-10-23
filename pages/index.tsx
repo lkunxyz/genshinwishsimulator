@@ -6,7 +6,7 @@ export default function Index() {
 
     useEffect(() => {
         router.replace('/en')
-    }, [router])
+    }, [])
 
     return (
         <div className="min-h-screen flex items-center justify-center">

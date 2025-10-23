@@ -1,0 +1,23 @@
+
+> game-website@1.0.3 dev /Users/likun/project/genshinwishsimulator
+> next dev
+
+- [36minfo[0m [nextra] You have Next.js i18n enabled, read here https://nextjs.org/docs/advanced-features/i18n-routing for the docs.
+- [33mwarn[0m [nextra] Next.js doesn't support i18n by locale folder names.
+When i18n enabled, Nextra unset nextConfig.i18n to `undefined`, use `useRouter` from `nextra/hooks` if you need `locale` or `defaultLocale` values.
+ ⚠ Specified "rewrites" will not automatically work with "output: export". See more info here: https://nextjs.org/docs/messages/export-no-custom-routes
+ ⚠ Port 3000 is in use, trying 3001 instead.
+- [36minfo[0m [nextra] You have Next.js i18n enabled, read here https://nextjs.org/docs/advanced-features/i18n-routing for the docs.
+- [33mwarn[0m [nextra] Next.js doesn't support i18n by locale folder names.
+When i18n enabled, Nextra unset nextConfig.i18n to `undefined`, use `useRouter` from `nextra/hooks` if you need `locale` or `defaultLocale` values.
+ ⚠ Specified "rewrites" will not automatically work with "output: export". See more info here: https://nextjs.org/docs/messages/export-no-custom-routes
+  ▲ Next.js 14.2.22
+  - Local:        http://localhost:3001
+  - Environments: .env.development, .env
+
+ ✓ Starting...
+ ⚠ Specified "rewrites" will not automatically work with "output: export". See more info here: https://nextjs.org/docs/messages/export-no-custom-routes
+   automatically enabled Fast Refresh for 2 custom loaders
+ ⚠ Specified "rewrites" will not automatically work with "output: export". See more info here: https://nextjs.org/docs/messages/export-no-custom-routes
+ ✓ Ready in 2.1s
+[?25h

@@ -1,0 +1,15 @@
+{
+    "keep": {
+        "days": true,
+        "amount": 14
+    },
+    "auditLog": "/Users/likun/project/genshinwishsimulator/logs/.85bf27822b6234739564309d5ba85efc64609d5e-audit.json",
+    "files": [
+        {
+            "date": 1761226575485,
+            "name": "/Users/likun/project/genshinwishsimulator/logs/mcp-puppeteer-2025-10-23.log",
+            "hash": "71b8ea23ef7e3b238a35d8ef8e7166b93c6e9cf32044a9a08a3a4f9ad55f2eb3"
+        }
+    ],
+    "hashType": "sha256"
+}

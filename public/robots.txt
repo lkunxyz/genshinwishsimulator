@@ -1,49 +1,11 @@
-# Genshin Wish Simulator - robots.txt
-# Free practice tool for Genshin Impact wishing system
-
-# Allow all search engines
+# *
 User-agent: *
 Allow: /
-
-# Disallow error pages
 Disallow: /404
 Disallow: /500
-Disallow: /404.html
-Disallow: /500.html
-
-# Disallow admin/private paths (if any in future)
-Disallow: /api/
-Disallow: /_next/
-Disallow: /admin/
 
 # Host
 Host: https://genshinwishsimulator.com
 
 # Sitemaps
 Sitemap: https://genshinwishsimulator.com/sitemap.xml
-
-# Additional instructions for specific crawlers
-User-agent: Googlebot
-Allow: /
-Crawl-delay: 0
-
-User-agent: Bingbot
-Allow: /
-Crawl-delay: 0
-
-User-agent: Slurp
-Allow: /
-Crawl-delay: 1
-
-# Block AI training crawlers (optional - uncomment if needed)
-# User-agent: GPTBot
-# Disallow: /
-#
-# User-agent: ChatGPT-User
-# Disallow: /
-#
-# User-agent: CCBot
-# Disallow: /
-#
-# User-agent: anthropic-ai
-# Disallow: /

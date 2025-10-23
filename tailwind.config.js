@@ -3,7 +3,8 @@ module.exports = {
   darkMode: 'class',
   content: [
     './src/**/*.{js,jsx,ts,tsx,md,mdx}',
-    './pages/**/*.{js,jsx,ts,tsx,md,mdx}'
+    './pages/**/*.{js,jsx,ts,tsx,md,mdx}',
+    './theme.config.jsx'
   ],
   theme: {
     extend: {
@@ -20,5 +21,7 @@ module.exports = {
         }
       }
     }
-  }
+  },
+  // Enable JIT mode for better performance
+  mode: 'jit',
 }

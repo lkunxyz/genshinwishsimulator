@@ -21,6 +21,7 @@ export function Footer({ themeConfig: footerThemeConfig }: { themeConfig?: Theme
                         <button
                             key={lang.locale}
                             onClick={() => handleLanguageChange(lang.locale)}
+                            aria-label={`Switch to ${lang.name}`}
                             className={`text-sl text-theme-text-secondary hover:text-gaming-accent transition-colors duration-200 ${
                                 router.locale === lang.locale ? 'text-gaming-accent font-medium' : ''
                             }`}

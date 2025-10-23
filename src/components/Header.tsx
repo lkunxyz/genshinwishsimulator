@@ -51,9 +51,7 @@ export function Header({ themeConfig, meta }: HeaderProps) {
                     <div className="flex h-16 items-center justify-between max-w-[1200px] mx-auto px-4">
                         {/* Logo */}
                         <Link href={`/${locale}`} className="flex items-center space-x-2 hover:text-theme-text-primary transition-colors">
-                            <img src="/logo.png" alt="Logo" className="w-10 h-10" />
-                            {/* <img src="/images/drive-beyond-horizons.png" alt="Logo" className="w-10 h-10" /> */}
-                            {/* <img src="/images/bearclicker.png" alt="Logo" className="w-10 h-10" /> */}
+                            <img src="/logo-small.webp" alt="Logo" width={40} height={40} className="w-10 h-10" />
                             <span className="font-bold text-lg hidden sm:block text-theme-text-primary">GenshinWishSimulator</span>
                         </Link>
 

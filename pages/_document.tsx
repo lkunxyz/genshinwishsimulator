@@ -1,14 +1,17 @@
 import { Html, Head, Main, NextScript } from 'next/document'
+import type { DocumentContext } from 'next/document'
 import { SUPPORTED_LOCALES, DEFAULT_LOCALE } from '@/config/site'
 
 export default function Document() {
-  // 获取当前语言
-  const locale = typeof window !== 'undefined' ? window.__NEXT_DATA__?.locale || DEFAULT_LOCALE : DEFAULT_LOCALE
-  const htmlLang = SUPPORTED_LOCALES[locale]?.htmlLang || locale
-
   return (
-    <Html lang={htmlLang}>
+    <Html>
        <Head>
+        {/* Preconnect to external domains for faster loading */}
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
+        <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com" />
+
         <meta name="google-adsense-account" content="ca-pub-8471354774896713" />
         <script
           async

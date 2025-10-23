@@ -495,10 +495,10 @@ export function GameFrame({ src, title, cover }: GameFrameProps) {
     }, [isFullscreen, isMobile, isTablet, isAndroid]);
 
     return (
-        <div 
-            ref={containerRef} 
+        <div
+            ref={containerRef}
             className={`
-                mx-auto flex flex-col bg-theme-bg-primary dark:bg-dark-secondary 
+                mx-auto flex flex-col bg-theme-bg-primary dark:bg-dark-secondary
                 backdrop-blur-sm rounded-2xl shadow-xl overflow-hidden border border-theme-border
                 transition-all duration-300
                 ${isFullscreen && isMobile ? 'fixed inset-0' : ''}
@@ -511,7 +511,7 @@ export function GameFrame({ src, title, cover }: GameFrameProps) {
                 } : {})
             }}
         >
-            <div className="relative w-full h-full min-h-[40vh] md:aspect-video bg-dark-secondary">
+            <div className="relative w-full h-full min-h-[400px] md:aspect-video bg-dark-secondary">
                 {/* 控制按钮 - 始终显示 */}
                 <div className={`
                     absolute top-2 right-2 z-50 flex items-center gap-2 

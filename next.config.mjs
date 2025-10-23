@@ -11,7 +11,7 @@ const withNextra = nextra({
 
 export default withNextra({
   i18n: {
-    locales: ["en"],
+    locales: ["en", "ja", "ko", "de", "fr", "es", "it"],
     //  locales: ["en", "es", "fr", "de", "it", "ru", "uk", "pt", "ja", "nb", "zh"],
     defaultLocale: "en",
   },
@@ -35,6 +35,13 @@ export default withNextra({
   env: {
     NEXT_PUBLIC_SITE_URL:
       process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000",
+  },
+  // Optimize bundle size
+  swcMinify: true,
+  compiler: {
+    removeConsole: process.env.NODE_ENV === 'production' ? {
+      exclude: ['error', 'warn'],
+    } : false,
   },
   webpack(config) {
     config.resolve.alias["@"] = path.join(__dirname, "src");
