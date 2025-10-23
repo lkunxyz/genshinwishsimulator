@@ -31,12 +31,12 @@ export default function App({ Component, pageProps }: AppProps) {
         strategy="lazyOnload"
       />
 
-      {/* Google Analytics - 在交互后加载 */}
+      {/* Google Analytics - 延迟加载以提升初始性能 */}
       <Script
-        strategy="afterInteractive"
+        strategy="lazyOnload"
         src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}
       />
-      <Script id="google-analytics" strategy="afterInteractive">
+      <Script id="google-analytics" strategy="lazyOnload">
         {`
           window.dataLayer = window.dataLayer || [];
           function gtag(){dataLayer.push(arguments);}

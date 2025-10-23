@@ -555,7 +555,8 @@ export function GameFrame({ src, title, cover }: GameFrameProps) {
                                 alt={`${title} - Genshin Wish Simulator Game Preview`}
                                 width="1200"
                                 height="630"
-                                loading="lazy"
+                                loading="eager"
+                                fetchPriority="high"
                                 className="w-full h-full object-cover"
                             />
                             <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">

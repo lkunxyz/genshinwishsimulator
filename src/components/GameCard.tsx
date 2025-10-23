@@ -11,17 +11,19 @@ interface GameCardProps {
     date?: string;
     tags?: string[];
     author?: string;
+    priority?: boolean; // 是否为高优先级图片（用于 LCP 优化）
 }
 
-export function GameCard({ 
-    title, 
-    description, 
+export function GameCard({
+    title,
+    description,
     cover = '/placeholder-game.jpg',
     href,
     category,
     date,
     tags,
-    author
+    author,
+    priority = false
 }: GameCardProps) {
     return (
         <div className="group bg-white dark:bg-[#242424] rounded-xl shadow-sm overflow-hidden transition-all hover:shadow-md">
@@ -29,9 +31,13 @@ export function GameCard({
                 {/* 封面图区域 */}
                 <div className="relative aspect-[16/9] overflow-hidden">
                     {/* 游戏封面 */}
-                    <img 
-                        src={cover} 
+                    <img
+                        src={cover}
                         alt={title}
+                        width="320"
+                        height="180"
+                        loading={priority ? "eager" : "lazy"}
+                        fetchPriority={priority ? "high" : "auto"}
                         className="w-full h-full object-cover transition-transform group-hover:scale-105"
                     />
                     

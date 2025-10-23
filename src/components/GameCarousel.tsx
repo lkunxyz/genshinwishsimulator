@@ -50,7 +50,7 @@ export function GameCarousel({ title, games, className = '' }: GameCarouselProps
                     </div>
                 </div>
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-                    {visibleGames.map((game) => (
+                    {visibleGames.map((game, index) => (
                         <GameCard
                             key={game.slug}
                             href={game.slug || '#'}
@@ -59,6 +59,7 @@ export function GameCarousel({ title, games, className = '' }: GameCarouselProps
                             cover={game.cover}
                             category={game.category}
                             date={game.date}
+                            priority={currentIndex === 0 && index < 2}
                         />
                     ))}
                 </div>
