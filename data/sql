@@ -1,0 +1,145 @@
+-- 启用ltree扩展
+CREATE EXTENSION IF NOT EXISTS ltree;
+
+-- 删除已存在的对象（使用 CASCADE）
+DROP TRIGGER IF EXISTS update_incrediboxbananaComments_updated_at ON incrediboxbananaComments;
+DROP TRIGGER IF EXISTS update_incrediboxbananaComments_path ON incrediboxbananaComments;
+DROP FUNCTION IF EXISTS update_updated_at_column() CASCADE;
+DROP FUNCTION IF EXISTS update_comment_path() CASCADE;
+DROP VIEW IF EXISTS incrediboxbananaComments_stats CASCADE;
+DROP POLICY IF EXISTS "允许匿名用户插入评论" ON incrediboxbananaComments;
+DROP POLICY IF EXISTS "允许所有用户查看评论" ON incrediboxbananaComments;
+DROP POLICY IF EXISTS "允许用户更新自己的评论" ON incrediboxbananaComments;
+DROP POLICY IF EXISTS "允许用户删除自己的评论" ON incrediboxbananaComments;
+
+-- 删除已存在的约束
+ALTER TABLE IF EXISTS incrediboxbananaComments
+    DROP CONSTRAINT IF EXISTS rating_range,
+    DROP CONSTRAINT IF EXISTS likes_non_negative,
+    DROP CONSTRAINT IF EXISTS level_range;
+
+-- 创建评论表（如果不存在）
+CREATE TABLE IF NOT EXISTS incrediboxbananaComments (
+    id BIGSERIAL PRIMARY KEY,
+    game_id VARCHAR(255) NOT NULL,
+    user_id VARCHAR(255) NOT NULL,
+    user_name VARCHAR(255) NOT NULL,
+    email VARCHAR(255),
+    content TEXT NOT NULL,
+    rating INTEGER DEFAULT 5 CHECK (rating >= 1 AND rating <= 5),
+    likes INTEGER DEFAULT 0,
+    parent_id BIGINT REFERENCES incrediboxbananaComments(id),
+    level INTEGER DEFAULT 0,
+    path LTREE,
+    created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
+);
+
+-- 创建索引（如果不存在）
+CREATE INDEX IF NOT EXISTS idx_incrediboxbananaComments_game_id ON incrediboxbananaComments(game_id);
+CREATE INDEX IF NOT EXISTS idx_incrediboxbananaComments_user_id ON incrediboxbananaComments(user_id);
+CREATE INDEX IF NOT EXISTS idx_incrediboxbananaComments_created_at ON incrediboxbananaComments(created_at);
+CREATE INDEX IF NOT EXISTS idx_incrediboxbananaComments_parent_id ON incrediboxbananaComments(parent_id);
+CREATE INDEX IF NOT EXISTS idx_incrediboxbananaComments_path ON incrediboxbananaComments USING GIST(path);
+
+-- 创建或替换更新时间触发器函数
+CREATE OR REPLACE FUNCTION update_updated_at_column()
+RETURNS TRIGGER AS $$
+BEGIN
+    NEW.updated_at = CURRENT_TIMESTAMP;
+    RETURN NEW;
+END;
+$$ language 'plpgsql';
+
+-- 创建或替换评论路径更新触发器函数
+CREATE OR REPLACE FUNCTION update_comment_path()
+RETURNS TRIGGER AS $$
+BEGIN
+    IF NEW.parent_id IS NULL THEN
+        NEW.path = text2ltree(NEW.id::text);
+    ELSE
+        SELECT path || NEW.id::text INTO NEW.path
+        FROM incrediboxbananaComments
+        WHERE id = NEW.parent_id;
+    END IF;
+    RETURN NEW;
+END;
+$$ LANGUAGE plpgsql;
+
+-- 创建触发器（如果不存在）
+DROP TRIGGER IF EXISTS update_incrediboxbananaComments_updated_at ON incrediboxbananaComments;
+CREATE TRIGGER update_incrediboxbananaComments_updated_at
+    BEFORE UPDATE ON incrediboxbananaComments
+    FOR EACH ROW
+    EXECUTE FUNCTION update_updated_at_column();
+
+DROP TRIGGER IF EXISTS update_incrediboxbananaComments_path ON incrediboxbananaComments;
+CREATE TRIGGER update_incrediboxbananaComments_path
+    BEFORE INSERT ON incrediboxbananaComments
+    FOR EACH ROW
+    EXECUTE FUNCTION update_comment_path();
+
+-- 添加评论表约束（如果不存在）
+DO $$ BEGIN
+    ALTER TABLE incrediboxbananaComments
+        ADD CONSTRAINT rating_range CHECK (rating >= 1 AND rating <= 5);
+EXCEPTION
+    WHEN duplicate_object THEN null;
+END $$;
+
+DO $$ BEGIN
+    ALTER TABLE incrediboxbananaComments
+        ADD CONSTRAINT likes_non_negative CHECK (likes >= 0);
+EXCEPTION
+    WHEN duplicate_object THEN null;
+END $$;
+
+DO $$ BEGIN
+    ALTER TABLE incrediboxbananaComments
+        ADD CONSTRAINT level_range CHECK (level >= 0 AND level <= 3);
+EXCEPTION
+    WHEN duplicate_object THEN null;
+END $$;
+
+-- 创建或替换评论统计视图
+CREATE OR REPLACE VIEW incrediboxbananaComments_stats AS
+SELECT 
+    game_id,
+    COUNT(*) as total_comments,
+    AVG(CASE WHEN parent_id IS NULL THEN rating ELSE NULL END) as average_rating,
+    SUM(likes) as total_likes,
+    COUNT(CASE WHEN parent_id IS NULL AND rating = 5 THEN 1 END) as five_star_count,
+    COUNT(CASE WHEN parent_id IS NULL AND rating = 4 THEN 1 END) as four_star_count,
+    COUNT(CASE WHEN parent_id IS NULL AND rating = 3 THEN 1 END) as three_star_count,
+    COUNT(CASE WHEN parent_id IS NULL AND rating = 2 THEN 1 END) as two_star_count,
+    COUNT(CASE WHEN parent_id IS NULL AND rating = 1 THEN 1 END) as one_star_count
+FROM incrediboxbananaComments
+GROUP BY game_id;
+
+-- 启用 RLS
+ALTER TABLE incrediboxbananaComments ENABLE ROW LEVEL SECURITY;
+
+-- 删除并重新创建 RLS 策略
+DROP POLICY IF EXISTS "允许匿名用户插入评论" ON incrediboxbananaComments;
+CREATE POLICY "允许匿名用户插入评论"
+ON incrediboxbananaComments FOR INSERT
+TO anon
+WITH CHECK (true);
+
+DROP POLICY IF EXISTS "允许所有用户查看评论" ON incrediboxbananaComments;
+CREATE POLICY "允许所有用户查看评论"
+ON incrediboxbananaComments FOR SELECT
+TO anon
+USING (true);
+
+DROP POLICY IF EXISTS "允许用户更新自己的评论" ON incrediboxbananaComments;
+CREATE POLICY "允许用户更新自己的评论"
+ON incrediboxbananaComments FOR UPDATE
+TO anon
+USING (true);
+
+DROP POLICY IF EXISTS "允许用户删除自己的评论" ON incrediboxbananaComments;
+CREATE POLICY "允许用户删除自己的评论"
+ON incrediboxbananaComments FOR DELETE
+TO anon
+USING (true);

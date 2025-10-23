@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
+  <!-- Homepage - Genshin Wish Simulator -->
+  <url>
+    <loc>https://genshinwishsimulator.com/en</loc>
+    <lastmod>2025-10-23T00:00:00.000Z</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://genshinwishsimulator.com/en"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://genshinwishsimulator.com/en"/>
+  </url>
+
+  <!-- About Page -->
+  <url>
+    <loc>https://genshinwishsimulator.com/en/about</loc>
+    <lastmod>2025-10-23T00:00:00.000Z</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://genshinwishsimulator.com/en/about"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://genshinwishsimulator.com/en/about"/>
+  </url>
+
+  <!-- Download Page -->
+  <url>
+    <loc>https://genshinwishsimulator.com/en/download</loc>
+    <lastmod>2025-10-23T00:00:00.000Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://genshinwishsimulator.com/en/download"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://genshinwishsimulator.com/en/download"/>
+  </url>
+
+  <!-- Popular Games List -->
+  <url>
+    <loc>https://genshinwishsimulator.com/en/popular</loc>
+    <lastmod>2025-10-23T00:00:00.000Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://genshinwishsimulator.com/en/popular"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://genshinwishsimulator.com/en/popular"/>
+  </url>
+
+  <!-- Popular Game: Crazy Cattle 3D -->
+  <url>
+    <loc>https://genshinwishsimulator.com/en/popular/crazy-cattle-3d</loc>
+    <lastmod>2025-10-23T00:00:00.000Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://genshinwishsimulator.com/en/popular/crazy-cattle-3d"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://genshinwishsimulator.com/en/popular/crazy-cattle-3d"/>
+  </url>
+
+  <!-- Popular Game: Square Race -->
+  <url>
+    <loc>https://genshinwishsimulator.com/en/popular/square-race</loc>
+    <lastmod>2025-10-23T00:00:00.000Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://genshinwishsimulator.com/en/popular/square-race"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://genshinwishsimulator.com/en/popular/square-race"/>
+  </url>
+
+  <!-- Recommend Games List -->
+  <url>
+    <loc>https://genshinwishsimulator.com/en/recommend</loc>
+    <lastmod>2025-10-23T00:00:00.000Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://genshinwishsimulator.com/en/recommend"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://genshinwishsimulator.com/en/recommend"/>
+  </url>
+
+  <!-- Blog List -->
+  <url>
+    <loc>https://genshinwishsimulator.com/en/blog</loc>
+    <lastmod>2025-10-23T00:00:00.000Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://genshinwishsimulator.com/en/blog"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://genshinwishsimulator.com/en/blog"/>
+  </url>
+
+  <!-- Blog Post: Car Stuck Drive Beyond Horizons -->
+  <url>
+    <loc>https://genshinwishsimulator.com/en/blog/car-stuck-drive-beyond-horizons</loc>
+    <lastmod>2025-10-23T00:00:00.000Z</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://genshinwishsimulator.com/en/blog/car-stuck-drive-beyond-horizons"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://genshinwishsimulator.com/en/blog/car-stuck-drive-beyond-horizons"/>
+  </url>
+
+  <!-- Static Pages (root level) -->
+  <url>
+    <loc>https://genshinwishsimulator.com/change-log</loc>
+    <lastmod>2025-10-23T00:00:00.000Z</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.4</priority>
+  </url>
+
+  <url>
+    <loc>https://genshinwishsimulator.com/privacy</loc>
+    <lastmod>2025-10-23T00:00:00.000Z</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+
+  <url>
+    <loc>https://genshinwishsimulator.com/terms</loc>
+    <lastmod>2025-10-23T00:00:00.000Z</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+</urlset>

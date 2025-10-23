@@ -1,0 +1,50 @@
+<svg width="400" height="400" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <filter id="fnafinrealtime-texture">
+      <feTurbulence type="fractalNoise" baseFrequency="0.01" numOctaves="1"/>
+      <feDisplacementMap in="SourceGraphic" scale="5"/>
+    </filter>
+  </defs>
+  
+  <!-- 背景 -->
+  <rect width="400" height="400" fill="#FFFFFF"/>
+  
+  <!-- Scrunkly表情层 - 最浅色的基础层 -->
+  <path d="M200 155 
+           Q 280 155, 280 220
+           T 200 285
+           Q 120 285, 120 220
+           T 200 155"
+        fill="#000000" 
+        fill-opacity="0.2"
+        filter="url(#fnafinrealtime-texture)"/>
+  
+  <!-- Sprunki微笑层 - 中间层 -->
+  <path d="M200 175
+           Q 270 175, 270 220
+           T 200 265
+           Q 130 265, 130 220
+           T 200 175"
+        fill="#000000"
+        fill-opacity="0.6"/>
+        
+  <!-- 最深的皱脸表情层 -->
+  <path d="M200 195
+           Q 260 195, 260 220
+           T 200 245
+           Q 140 245, 140 220
+           T 200 195"
+        fill="#000000"/>
+        
+  <!-- Sprunki的尖耳朵 -->
+  <path d="M160 175 L 200 120 L 240 175" 
+        fill="#000000" 
+        fill-opacity="0.8"/>
+        
+  <!-- 开心眼睛 -->
+  <path d="M170 205 Q 180 195, 190 205" stroke="#000000" fill="none" stroke-width="2"/>
+  <path d="M210 205 Q 220 195, 230 205" stroke="#000000" fill="none" stroke-width="2"/>
+  
+  <!-- Scrunkly皱鼻子 -->
+  <path d="M196 215 Q 200 220, 204 215" stroke="#000000" fill="none" stroke-width="2"/>
+</svg>
